@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    /* Retaining the subtle grid to layer with the particle engine */
+    background-image: radial-gradient(#27272a 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+/* Minimalist Bento Card Structure */
+.bento-card {
+    background-color: rgba(9, 9, 11, 0.7);
+    border: 1px solid #27272a;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    transition: border-color 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.bento-card:hover {
+    border-color: #3f3f46;
+}
+
+/* Scroll Reveal Utility Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Clean Minimal Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+}

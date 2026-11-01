@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Contact | RoBarts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zinc: {
+                            50: '#fafafa', 100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8', 400: '#a1a1aa',
+                            500: '#71717a', 600: '#52525b', 700: '#3f3f46', 800: '#27272a', 900: '#18181b', 950: '#09090b',
+                        },
+                        brand: {
+                            500: '#7c3aed', 600: '#6d28d9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-zinc-950 text-zinc-50 antialiased selection:bg-brand-500 selection:text-white relative min-h-screen flex flex-col justify-between">
+
+    <!-- Particle Engine Canvas with explicit pointer-events-none -->
+    <canvas id="particles-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-60"></canvas>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-transparent bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded bg-zinc-100 flex items-center justify-center text-zinc-950">
+                    <i class="fa-solid fa-robot text-sm"></i>
+                </div>
+                <div>
+                    <span class="text-sm font-bold tracking-tight">RoBarts</span>
+                    <span class="ml-2 text-xs text-zinc-400 font-medium hidden sm:inline-block border-l border-zinc-800 pl-2">St Bartholomew's School</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-zinc-400">
+                <a href="index.html" class="hover:text-zinc-50 transition-colors">Home</a>
+                <a href="about.html" class="text-zinc-50 transition-colors">About</a>
+            </div>
+
+            <div class="md:hidden flex items-center relative z-50">
+                <button id="menu-btn" class="text-zinc-400 hover:text-zinc-50 focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-b border-zinc-800 px-6 py-4 space-y-4 text-sm font-medium relative z-50">
+            <a href="index.html" class="block text-zinc-400">Home</a>
+            <a href="about.html" class="block text-zinc-50">About</a>
+        </div>
+    </nav>
+
+    <!-- Main Content with high z-index and pointer-events auto -->
+    <main class="pt-32 pb-32 px-6 max-w-6xl mx-auto space-y-32 relative z-20 w-full">
+        
+        <section class="reveal active">
+            <div class="space-y-4 mb-12">
+                <h1 class="text-4xl sm:text-5xl font-semibold tracking-tighter text-zinc-50">Our Background</h1>
+                <p class="text-lg text-zinc-400 max-w-2xl">Building technical excellence in Newbury, Berkshire.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bento-card space-y-6">
+                    <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                        <i class="fa-solid fa-school text-brand-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-zinc-50">St Bartholomew's School</h3>
+                        <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Based in Newbury, Berkshire, we are a dedicated high school robotics team. We compete with a passion for mechanical engineering, precise code architecture, and continuous improvement across competitive seasons.</p>
+                    </div>
+                </div>
+                
+                <div class="bento-card space-y-6">
+                    <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                        <i class="fa-solid fa-award text-brand-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-zinc-50">Control Award Winners</h3>
+                        <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Proud recipients of last season's Control Award for outstanding software architecture and sensor integration. This year, our goal is to iterate on our mechanical systems to progress beyond the regional qualifiers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal active">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div class="space-y-6 lg:sticky lg:top-32">
+                    <h2 class="text-3xl font-semibold tracking-tighter">Get in Touch</h2>
+                    <p class="text-sm text-zinc-400 max-w-sm leading-relaxed">
+                        Interested in sponsoring our team, discussing technical collaborations, or learning more about our portfolio? Send us a direct message.
+                    </p>
+                    <div class="flex items-center space-x-3 text-sm text-zinc-300">
+                        <i class="fa-regular fa-envelope text-brand-400"></i>
+                        <span>21sdash@stbarts.co.uk</span>
+                    </div>
+                </div>
+
+                <div class="bento-card bg-zinc-900/60 backdrop-blur-md relative z-30">
+                    <form action="https://formsubmit.co/21sdash@stbarts.co.uk" method="POST" class="space-y-6" id="contact-form">
+                        <input type="hidden" name="_subject" value="New Message via RoBarts Website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Your Name</label>
+                                <input type="text" name="name" required class="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-3 text-sm text-zinc-50 placeholder-zinc-600 focus:outline-none focus:border-brand-500 transition-colors" placeholder="John Doe">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Email Address</label>
+                                <input type="email" name="email" required class="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-3 text-sm text-zinc-50 placeholder-zinc-600 focus:outline-none focus:border-brand-500 transition-colors" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <label class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Message</label>
+                            <textarea name="message" required rows="5" class="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-3 text-sm text-zinc-50 placeholder-zinc-600 focus:outline-none focus:border-brand-500 transition-colors resize-none" placeholder="How can we collaborate?"></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full py-3 rounded-md bg-zinc-50 text-zinc-950 text-sm font-semibold hover:bg-zinc-200 transition-colors flex items-center justify-center space-x-2 cursor-pointer">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-zinc-800 py-12 px-6 relative z-20 bg-zinc-950/50 backdrop-blur-sm w-full">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-robot text-zinc-600"></i>
+                <span class="text-sm font-semibold text-zinc-400">RoBarts 2027</span>
+            </div>
+            <p class="text-xs text-zinc-600">St Bartholomew's School, Newbury. Engineering Portfolio.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
